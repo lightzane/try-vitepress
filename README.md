@@ -130,3 +130,13 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 ```
+
+### Setting Public Base Path
+
+See [config.mts](./docs/.vitepress/config.mts#L10)
+
+https://vitepress.dev/guide/deploy#setting-a-public-base-path
+
+By default, we assume the site is going to be deployed at the root path of a domain (`/`). If your site is going to be served at a sub-path, e.g. `https://mywebsite.com/blog/`, then you need to set the [`base`](https://vitepress.dev/reference/site-config#base) option to `'/blog/'` in the VitePress config.
+
+Example: If you're using Github (or GitLab) Pages and deploying to `user.github.io/repo/`, then set your `base` to `/repo/`.

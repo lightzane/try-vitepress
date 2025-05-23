@@ -7,6 +7,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: 'https://pinia.vuejs.org/logo.svg' }]
   ],
+  base: '/try-vitepress', // https://vitepress.dev/guide/deploy#setting-a-public-base-path
   cleanUrls: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
