@@ -1,63 +1,35 @@
-import { defineConfig } from 'vitepress'
+import { type DefaultTheme, defineConfig } from 'vitepress';
+
+const logo = 'https://pinia.vuejs.org/logo.svg';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site Testing",
-  head: [
-    ['link', { rel: 'icon', href: 'https://pinia.vuejs.org/logo.svg' }]
-  ],
+  title: 'My Awesome Project',
+  description: 'A VitePress Site Testing',
+  head: [['link', { rel: 'icon', href: logo }]],
   base: '/try-vitepress', // https://vitepress.dev/guide/deploy#setting-a-public-base-path
   cleanUrls: true,
+  lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: 'https://pinia.vuejs.org/logo.svg',
+    logo,
 
     docFooter: {
-      next: 'Susunod'
+      next: 'Susunod',
     },
-    
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/defaults/markdown-examples' },
-      { text: 'More Examples', link: '/more-examples' },
-      { text: 'Google', link: 'https://google.com' }
-    ],
+
+    nav: nav(),
 
     sidebar: {
-      '/defaults/': [
-        {
-          text: 'Introduction',
-          items: [
-            {
-              text: 'Getting Started',
-              link: 'https://google.com'
-            }
-          ]
-        },
-        {
-          text: 'Examples',
-          base: '/defaults',
-          docFooterText: 'The Default Examples',
-          items: [
-            { text: 'Markdown Examples', link: '/markdown-examples' },
-            { text: 'Runtime API Examples', link: '/api-examples' },
-            { text: 'Extra', link: '/extra' },
-          ]
-        },
-      ],
+      '/defaults/': {
+        base: '/defaults/',
+        items: sbDefaults(),
+      },
 
-      '/more-examples/': [
-        {
-          text: 'More',
-          collapsed: true,
-          items: [
-            {
-              text: 'More Examples', link: '/more-examples/'
-            }
-          ]
-        }
-      ]
+      '/more-examples/': {
+        base: '/more-examples/',
+        items: sbMoreExamples(),
+      },
     },
 
     socialLinks: [
@@ -77,7 +49,54 @@ export default defineConfig({
 
     search: {
       provider: 'local',
-    }
-    
-  }
-})
+    },
+  },
+});
+
+function nav(): DefaultTheme.NavItem[] {
+  return [
+    { text: 'Home', link: '/' },
+    {
+      text: 'Examples',
+      link: '/defaults/markdown-examples',
+      activeMatch: '/defaults/',
+    },
+    {
+      text: 'More Examples',
+      link: '/more-examples/introduction',
+      activeMatch: '/more-examples/',
+    },
+    { text: 'Google', link: 'https://google.com' },
+  ];
+}
+
+function sbDefaults(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: 'Examples',
+      base: '/defaults/',
+      items: [
+        { text: 'Markdown Examples', link: 'markdown-examples' },
+        { text: 'Runtime API Examples', link: 'api-examples' },
+        { text: 'Extra', link: 'extra' },
+      ],
+    },
+
+    { text: 'More Examples', link: '../more-examples/introduction' },
+  ];
+}
+
+function sbMoreExamples(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: 'More',
+      collapsed: false,
+      items: [
+        {
+          text: 'Introduction',
+          link: 'introduction',
+        },
+      ],
+    },
+  ];
+}
