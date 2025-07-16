@@ -65,12 +65,14 @@ export default Theme;
 select * from db.books;
 ```
 
+<<< @/snippets/graphql/schema.graphql#query
+
 :::
 
 ::: code-group
 
 ```ts [config.mts]
-import { iPostgres } from './iconify'; // [!code ++]
+import { iGraphql, iPostgres } from './iconify'; // [!code ++]
 // ...other imports...
 
 export default defineConfig({
@@ -82,6 +84,8 @@ export default defineConfig({
       groupIconVitePlugin({ // [!code ++]
         customIcon: { // [!code ++]
           postgres: iPostgres, // [!code ++]
+          graphql: iGraphql, // [!code ++]
+          gql: iGraphql, // [!code ++]
         }, // [!code ++]
       }), // [!code ++]
     ],
