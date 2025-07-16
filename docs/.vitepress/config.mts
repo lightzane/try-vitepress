@@ -103,6 +103,10 @@ function sbMoreExamples(): DefaultTheme.SidebarItem[] {
           text: 'Introduction',
           link: 'introduction',
         },
+        {
+          text: 'GraphQL',
+          link: 'graphql',
+        },
       ],
     },
   ];

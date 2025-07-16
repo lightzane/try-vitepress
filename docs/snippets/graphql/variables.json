@@ -1,0 +1,39 @@
+{
+  "variables": {
+    "example1":
+      // region book-subscription
+      {
+        "bookSub": {
+          "id": "1",
+          "title": "GraphQL Basics",
+          "description": "An introduction to GraphQL",
+          "rating": 4.5,
+          "author": "John Doe",
+          "year": 2023
+        }
+      },
+    // endregion book-subscription
+
+    "example2":
+      // region book-input
+      {
+        "bookInput": {
+          "title": "GraphQL Advanced",
+          "description": "Deep dive into GraphQL features",
+          "author": "Jane Smith",
+          "year": 2024
+        }
+      },
+    // endregion book-input
+
+    "example3":
+      // region update-book-input
+      {
+        "updateBookInput": {
+          "id": "1",
+          "title": "GraphQL Basics Updated"
+        }
+      }
+    // endregion update-book-input
+  }
+}

@@ -1,0 +1,46 @@
+# region query
+type Query {
+  books(title: String): [Book!] # [!code ++]
+  book(id: ID!): Book
+}
+# endregion query
+
+# region mutation
+type Mutation {
+  addBook(input: BookInput!): Book!
+  deleteBook(id: ID!): Boolean # [!code --]
+  updateBook(input: UpdateBookInput!): Book
+}
+# endregion mutation
+
+type Subscription {
+  bookSub: Book! # error highlight [!code error]
+}
+
+type Book { # warning highlight [!code warning]
+  id: ID!
+  title: String! # [!code warning]
+  description: String
+  rating: Float
+  author: String
+  year: Int
+}
+
+# region book-input
+input BookInput {
+  title: String!
+  description: String
+  rating: Float
+  author: String!
+  year: Int!
+}
+# endregion book-input
+
+input UpdateBookInput {
+  id: ID!
+  title: String
+  description: String
+  rating: Float
+  author: String
+  year: Int
+}
