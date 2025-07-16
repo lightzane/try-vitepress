@@ -51,6 +51,13 @@ export default defineConfig({
       provider: 'local',
     },
   },
+
+  markdown: {
+    theme: {
+      dark: 'dracula-soft',
+      light: 'github-light',
+    },
+  },
 });
 
 function nav(): DefaultTheme.NavItem[] {
