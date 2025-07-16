@@ -46,12 +46,14 @@ Tips:
 
 ```bash
 npm install -D vitepress
+# pnpm add -D vitepress # pnpm
 ```
 
 4. To start the dev server, run the following command in CLI
 
 ```bash
 npm run docs:dev
+# pnpm docs:dev # pnpm
 ```
 
 ## Deployment
@@ -97,9 +99,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Not needed if lastUpdated is not enabled
-      # - uses: pnpm/action-setup@v3 # Uncomment this block if you're using pnpm
+      # - uses: pnpm/action-setup@v4 # Uncomment this block if you're using pnpm
       #   with:
-      #     version: 9 # Not needed if you've set "packageManager" in package.json
+      #     version: 10 # Not needed if you've set "packageManager" in package.json
       # - uses: oven-sh/setup-bun@v1 # Uncomment this if you're using Bun
       - name: Setup Node
         uses: actions/setup-node@v4
