@@ -1,4 +1,9 @@
 import { type DefaultTheme, defineConfig } from 'vitepress';
+import {
+  groupIconMdPlugin,
+  groupIconVitePlugin,
+} from 'vitepress-plugin-group-icons';
+import { iGraphql, iPostgres } from './iconify';
 
 const logo = 'https://pinia.vuejs.org/logo.svg';
 
@@ -30,21 +35,26 @@ export default defineConfig({
         base: '/more-examples/',
         items: sbMoreExamples(),
       },
+
+      '/plugins/': {
+        base: '/plugins/',
+        items: sbPlugins(),
+      },
     },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
-      { icon: 'linkedin', link: 'https://google.com' },
-      { icon: 'discord', link: 'https://google.com' },
+      // { icon: 'linkedin', link: 'https://google.com' },
+      // { icon: 'discord', link: 'https://google.com' },
       { icon: 'instagram', link: 'https://google.com' },
-      { icon: 'youtube', link: 'https://google.com' },
-      { icon: 'tiktok', link: 'https://google.com' },
-      { icon: 'twitter', link: 'https://google.com' },
-      { icon: 'twitch', link: 'https://google.com' },
-      { icon: 'facebook', link: 'https://google.com' },
-      { icon: 'messenger', link: 'https://google.com' },
-      { icon: 'whatsapp', link: 'https://google.com' },
-      { icon: 'viber', link: 'https://google.com' },
+      // { icon: 'youtube', link: 'https://google.com' },
+      // { icon: 'tiktok', link: 'https://google.com' },
+      // { icon: 'twitter', link: 'https://google.com' },
+      // { icon: 'twitch', link: 'https://google.com' },
+      // { icon: 'facebook', link: 'https://google.com' },
+      // { icon: 'messenger', link: 'https://google.com' },
+      // { icon: 'whatsapp', link: 'https://google.com' },
+      // { icon: 'viber', link: 'https://google.com' },
     ],
 
     search: {
@@ -57,6 +67,21 @@ export default defineConfig({
       dark: 'dracula-soft',
       light: 'github-light',
     },
+    config: (md) => {
+      md.use(groupIconMdPlugin);
+    },
+  },
+
+  vite: {
+    plugins: [
+      groupIconVitePlugin({
+        customIcon: {
+          postgres: iPostgres,
+          graphql: iGraphql,
+          gql: iGraphql,
+        },
+      }),
+    ],
   },
 });
 
@@ -70,8 +95,13 @@ function nav(): DefaultTheme.NavItem[] {
     },
     {
       text: 'More Examples',
-      link: '/more-examples/introduction',
+      link: '/more-examples/graphql',
       activeMatch: '/more-examples/',
+    },
+    {
+      text: 'Plugins',
+      link: '/plugins/group-icons',
+      activeMatch: '/plugins/',
     },
     { text: 'Google', link: 'https://google.com' },
   ];
@@ -108,6 +138,15 @@ function sbMoreExamples(): DefaultTheme.SidebarItem[] {
           link: 'graphql',
         },
       ],
+    },
+  ];
+}
+
+function sbPlugins(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: 'Plugins',
+      items: [{ text: 'Vitepress Group Icons', link: 'group-icons' }],
     },
   ];
 }
